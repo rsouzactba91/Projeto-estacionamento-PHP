@@ -1,0 +1,26 @@
+* cadastro de mensalistas
+
+* Definir mensalistas na lista de pátio 
+
+* Cadastrar valor mensal( mensalista)
+
+* opção de lpr implementar 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Cadastrar outro sistema que se comunique com esse e realize as operações de pagamento sem a intervenção de um atendente
+tipos de pagamentos permitidos 
+
+* ticket avulso
+
+* mensalista informação pode ser puxada pela placa
+
+* funcionalidade de perda de cartão onde o mesmo inserindo os dados do veículos será calculado o valor a pagar do estacionamento.
+
+
+
+
+
+
+
+
+
