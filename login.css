@@ -1,0 +1,28 @@
+<style>
+    .body{
+        background:radial-gradient(45deg,#0673e7,white,white);
+    }
+.form {
+    width: 350px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 10px 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    background-color: #0673e7;
+}
+
+.container {
+    width: 350px;
+    margin: auto;
+    margin-top: 20px;
+    height: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+.entry-image {
+    width: 300px;
+    height: auto;
+}
+</style>
+   

@@ -3,72 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Sistema de estacionamento protótipo</title>
-    <style>
-        
-    </style>
-
-    <link rel="stylesheet" type="text/css" href="style.css"> <!-- Inclui o arquivo CSS para estilizar a página -->
-    <link rel="stylesheet" href="normalize.css"> <!-- Normaliza o comportamento de estilos em navegadores diferentes. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-
-    <div class="option-container">
-        <div id="app">
-            <div class="image-container">
-                <img class="entry-image" src="logo_estacionamento.png" alt="Descrição da Imagem">
+    <div class="sidebar">
+        <header class="text-center mb-4">
+            <img src="logo_estacionamento.png" alt="Descrição da Imagem" style="width: 100%; height: auto;">
+        </header>
+        <form method="post">
+            <div class="btn-group-vertical w-100">
+                <button type="submit" name="botao" value="Registrar entrada" class="btn btn-primary mb-2">Registrar entrada manual</button>
+                <button type="submit" name="botao" value="Exibir lista de pátio" class="btn btn-primary mb-2">Exibir lista de pátio</button>
+                <button type="submit" name="botao" value="Cobrar estacionamento" class="btn btn-primary mb-2">Cobrar estacionamento</button>
+                <button type="submit" name="botao" value="Acesso administrativo" class="btn btn-primary mb-2">Acesso administrativo</button>
+                <button type="submit" name="botao" value="Sair" class="btn btn-primary">Sair</button>
             </div>
-
-
-
-            <div class="button-container">
-            <form method="post"> 
-                    <?php
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                        // Verifica qual botão foi pressionado
-                        switch ($_POST["botao"]) {
-                            case "Registrar entrada":
-                                header("Location: registrarentrada.php");
-                                exit();
-                                break;                           
-                            case "Exibir lista de patio":
-                                header("Location: listadepatio.php"); // Substitua com o nome correto do arquivo
-                                exit();
-                                break;
-                           case "Cobrar estacionamento":
-                                header("Location: pagarestacionamento.php"); // Substitua com o nome correto do arquivo
-                                exit();
-                                break;
-                          /*  case "Consultar placa":
-                                header("Location: consultarplaca.php"); // Substitua com o nome correto do arquivo
-                                exit();
-                                break;*/
-                            case "Acesso administrativo":
-                                header("Location: acessoadmin.php"); // Substitua com o nome correto do arquivo
-                                exit();
-                                break;
-                               /* case "Limpeza de pátio":
-                                    header("Location: registrarsaida.php");
-                                    exit();
-                                    break;*/
-                            case "Sair":
-                                header("Location: index_old.php"); // Substitua com o nome correto do arquivo
-                                exit();
-                                break;
-                              }
-                    }
-                    ?>
-                    <div class="button"><input type="submit" name="botao" value="Registrar entrada"></div>                   
-                    <div class="button"><input type="submit" name="botao" value="Exibir lista de patio"></div>
-                    <div class="button"><input type="submit" name="botao" value="Cobrar estacionamento"></div>
-                   <!-- <div class="button"><input type="submit" name="botao" value="Consultar placa"></div>
-                   <div class="button"><input type="submit" name="botao" value="Limpeza de pátio"></div>-->
-                    <div class="button"><input type="submit" name="botao" value="Acesso administrativo"></div>                    
-                    <div class="button"><input type="submit" name="botao" value="Sair"></div>
-            </form>
-                </div>
-                    
-        </div>
+        </form>
     </div>
 
+    <div class="content">
+    <?php
+    $iframeSrc = '';
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["botao"])) {
+        switch ($_POST["botao"]) {
+            case "Registrar entrada":
+                $iframeSrc = 'entrada/registrarentrada.php';
+                break;
+            case "Exibir lista de pátio":
+                $iframeSrc = 'lista de pátio/listadepatio.php';
+                break;
+            case "Cobrar estacionamento":
+                $iframeSrc = 'Registrar saida/pagarestacionamento.php';
+                break;
+            case "Acesso administrativo":
+                header("location: acesso admin/acessoadmin.php");
+                exit();
+            case "Sair":
+                header("Location: /estacionamento/login.php");
+                exit();
+        }
+    }
+    ?>
+    <iframe id="conteudo" src="<?php echo htmlspecialchars($iframeSrc); ?>"></iframe>
+</div>
 </body>
 </html>
